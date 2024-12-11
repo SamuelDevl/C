@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+int getHeight();
+char getSymbol();
+
+int main(){
+    int times;
+    int counter = 0;
+    int height;
+    char symbol;
+    printf("How many times you want to execute the program? : ");
+    scanf(" %d", &times);
+    printf("%d, times\n", times);
+
+    do{
+    height = getHeight();
+    symbol = getSymbol();
+    printf("height: %d\n", height);
+    printf("symbol: %c\n\n", symbol);
+    counter++;
+    for(int i = 0; i < height; i++){
+        for(int j = height; j>= 1; j--){
+            if(i>=j){
+                printf("%c", symbol);
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    } while(counter < times);
+
+    return 1;
+}
+
+int getHeight(){
+    int check;
+    int height;
+    printf("please select height: ");
+    check = scanf(" %d", &height);
+    while(height < 0 && check == 1){
+        printf("please enter valid number: ");
+        scanf("%*[^\n]");
+        scanf(" %d", &height);
+        if(height < 0){
+            printf("Error, ");
+        } else {
+            return height;
+            height++;
+        }
+    }
+    while(check < 1){
+        printf("wrong input, please enter only valid number: ");
+        scanf("%*[^\n]");
+        scanf(" %d", &height);
+        if(height > 0 && height < 25000){
+            return height;
+            check++;
+        } else {
+            printf("Error, ");
+        }
+    }
+    return height;
+}
+
+
+char getSymbol(){
+    char symbol;
+    printf("insert symbol, number or letter that you want: ");
+    scanf(" %c", &symbol);
+    return symbol;
+}

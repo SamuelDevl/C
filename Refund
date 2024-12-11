@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+int getNumber();
+int getQuarters(int input);
+int getDimes(int input);
+int getNickle(int input);
+int getPenni(int input);
+
+int main()
+{
+
+int solution;
+int input = getNumber();
+    
+int Quarters = getQuarters(input);
+input = input - Quarters * 25;
+int Dimes = getDimes(input);
+input = input - Dimes * 10;
+int Nickle = getNickle(input);
+input = input - Nickle * 5;
+int Penni = getPenni(input);
+input = input - Penni * 1;
+
+solution = Quarters + Dimes + Nickle + Penni;
+    
+printf("%d", solution);
+
+}
+
+int getNumber(){
+    int number;
+    printf("Please insert money: ");
+    scanf("%d", &number);
+    while(number == 0 || number < 0){
+        printf("Please enter valid number: ");
+        scanf("%*[^\n]");
+        scanf("%d", &number);
+    }
+
+    if(number > 0){
+        return number;
+    } else {
+        return 0;
+    }
+}
+
+int getQuarters(int input){
+    int Quarters = 0;
+    while(input >= 25){
+        input = input - 25;
+        Quarters++;
+    }
+    return Quarters;
+}
+
+int getDimes(int input){
+    int Dimes = 0;
+    while(input >= 10){
+        input = input - 10;
+        Dimes++;
+    }
+    return Dimes;
+}
+
+int getNickle(int input){
+    int Nickle = 0;
+    while(input >= 5){
+        input = input - 5;
+        Nickle++;
+    }
+    return Nickle;
+}
+
+int getPenni(int input){
+    int Penni = 0;
+    while(input >= 1){
+        input = input - 1;
+        Penni++;
+    }
+    return Penni;
+}
